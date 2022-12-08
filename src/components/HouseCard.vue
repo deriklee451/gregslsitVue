@@ -3,8 +3,8 @@
         <img class="img-fluid rounded square-bottom" :src="car.imgUrl" alt="">
         <h5>{{ }} | {{ }} | {{ }}</h5>
         <h5>${{ car.price }}</h5>
-        <div class="p-2 text-start">{{ }}</div>
-        <button v-if="(car.creatorId == account.id)" @click="removeCar(car.id)"
+        <div class="p-2 text-start">{{ house.imgUrl }}</div>
+        <button v-if="(house.creatorId == account.id)" @click="removeCar(car.id)"
             class="btn btn-danger delete-btn rounded-pill"><i class="  px-2 mdi mdi-delete-forever"></i></button>
         <div v-if="car.creator" class="creator text-end p-1">
             <img :src="car.creator.picture" alt="">

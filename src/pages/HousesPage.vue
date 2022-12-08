@@ -3,7 +3,7 @@
     <h1 class="text-center text-primary"> Houses</h1>
     <div class="row justify-content-center">
       <div class="col-8 bg-white p-3 elevation-1 rounded">
-        <!-- <HouseForm /> -->
+        <HouseForm />
       </div>
     </div>
 
@@ -21,12 +21,28 @@
 <script>
 import { AppState } from '../AppState';
 import { computed, reactive, onMounted } from 'vue';
-import HouseForm from '../components/HouseForm.vue.js';
-  rt defau lt {
-   tup() {
-    rn {};
-  
-  components: { HouseForm }
+import HouseForm from '../components/HouseForm.vue';
+import { housesService } from '../services/HouseService.js';
+import Pop from '../utils/Pop.js';
+import { logger } from '../utils/Logger.js';
+
+export default {
+  setup() {
+    async function getHouses() {
+      try {
+        await housesService.getHouses()
+      } catch (error) {
+        Pop.error(error)
+        logger.log(error)
+      }
+    }
+
+    onMounted(() => {
+      getHouses()
+    })
+    return {};
+  },
+  components: { HouseForm, HouseForm }
 };
 </script>
 
